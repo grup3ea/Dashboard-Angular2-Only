@@ -1,0 +1,160 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-6">
+          <button type="submit" class="btn btn-success" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
+          <a class="btn btn-danger" (click)="onCancel()"><i class="fa fa-remove"></i> Cancel</a>
+        </div>
+        <div class="col-xs-6">
+          <p><strong>* Required fields</strong></p>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-6">
+          <label for="name"><strong>Name *</strong></label>
+          <input type="text" id="name" class="form-control" formControlName="name">
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+            <label id="profile"><strong>Profile</strong></label>
+            <select class="form-control" id="profile" formControlName="profile">
+              <option value="user">User</option>
+              <option value="admin">Administrator</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-xs-6">
+          <label for="username"><strong>Username *</strong></label>
+          <input type="text" id="username" class="form-control" formControlName="username">
+        </div>
+        <div class="col-xs-6">
+          <label for="password"><strong>Password</strong></label>
+          <input type="password" id="password" class="form-control" formControlName="password">
+        </div>
+      </div>
+      <br>
+      <label><strong>Endpoints</strong></label>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                <input type="text" class="form-control" #endpointTag>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                <input type="text" class="form-control" #endpointPhone>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" #endpointNode>
+                <option *ngFor="let item of nodes" value="item._id">{{item.tag}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <a class="btn btn-primary" (click)="onAddEndpoint(endpointTag.value, endpointPhone.value, endpointNode.value); endpointTag.value = ''; endpointPhone.value = ''">+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-group" formArrayName="endpoints">
+            <div class="row" *ngFor="let item of userForm?.controls['endpoints'].controls;let i = index">
+              <div formGroupName="{{i}}">
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                    <input type="text" class="form-control" formControlName="tag">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                    <input type="text" class="form-control" formControlName="phone">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <select class="form-control" formControlName="node">
+                    <option *ngFor="let item of nodes" value="item._id">{{item.tag}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-2">
+                  <a class="btn btn-danger" (click)="onRemoveEndpoint(i)">X</a>
+                </div>
+              </div>
+              <br><br>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <br>
+      <label><strong>XID's</strong></label>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group row">
+            <div class="col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                <input type="text" class="form-control" #xidTag>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                <input type="text" class="form-control" #xidPhone>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <select class="form-control" #xidNode>
+                <option *ngFor="let item of nodes" value="item._id">{{item.tag}}</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <a class="btn btn-primary" (click)="onAddXID(xidTag.value, xidPhone.value, xidNode.value); xidTag.value = ''; xidPhone.value=''">+</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-group" formArrayName="xids">
+            <div class="row" *ngFor="let item of userForm?.controls['xids'].controls;let i = index">
+              <div formGroupName="{{i}}">
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                    <input type="text" class="form-control" formControlName="tag">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                    <input type="text" class="form-control" formControlName="phone">
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <select class="form-control" formControlName="node">
+                    <option *ngFor="let item of nodes" value="item._id">{{item.tag}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-2">
+                  <a class="btn btn-danger" (click)="onRemoveXID(i)">X</a>
+                </div>
+              </div>
+              <br><br>
+            </div>
+          </ul>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

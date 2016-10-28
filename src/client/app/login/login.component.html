@@ -1,0 +1,20 @@
+<div class="login-page">
+	<div class="row">
+		<div class="col-lg-4 col-lg-offset-4">
+        	<img src="assets/img/SB-admin.png" width="150px" class="user-avatar" />
+			<h1>VoiceGen Manager</h1>
+			<form [formGroup]="userForm" (ngSubmit)="onLogin()">
+				<div class="form-content">
+					<div class="form-group">
+						<input type="text" class="form-control input-underline input-lg" formControlName="username" placeholder="Email">
+					</div>
+
+					<div class="form-group">
+						<input type="password" class="form-control input-underline input-lg" formControlName="password" placeholder="Password">
+					</div>
+				</div>
+				<button class="btn rounded-btn" [disabled]="!userForm.valid" > Log in </button>
+			</form>
+		</div>
+	</div>
+</div>

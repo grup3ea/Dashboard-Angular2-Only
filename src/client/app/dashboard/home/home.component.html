@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <h2 class="text-muted">Api Calls <small>by hours</small></h2>
+  <br>
+  <div class="row">
+    <div class="col-xl-9">
+      <div id="graphCalls"></div>
+      <div id="graphUsers"></div>
+    </div>
+      <div class="col-xl-3">
+        <br>
+        <div class="card card-primary card-inverse">
+          <div class="card-header card-primary">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-user fa-5x"></i>
+              </div>
+              <div class="col-xs-9 text-xs-center">
+                <h1>{{numUsers}}</h1>
+                <p>Users active</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card-success card-inverse">
+          <div class="card-header card-success">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-tasks fa-5x"></i>
+              </div>
+              <div class="col-xs-9 text-xs-center">
+                <h1>{{petAPI}}</h1>
+                <p>Petitions to API</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-panel card card-default">
+          <div class="card-header">
+            Users Calls to API
+          </div>
+          <div class="card-block">
+            <li class="list-group-item" *ngFor="let item of apiUsers">
+              {{item.user}}: {{item.count}}
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

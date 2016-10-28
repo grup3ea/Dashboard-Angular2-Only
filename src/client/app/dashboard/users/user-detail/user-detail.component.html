@@ -1,0 +1,104 @@
+<!--<div class="row">
+  <div class="col-xs-6">
+    <h1>{{selectedUser?.name}}</h1>
+  </div>
+  <div class="col-xs-6">
+    <br>
+    <button class="btn btn-primary">Update</button>
+    <button class="btn btn-danger">Delete</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <hr>
+    <h3>{{selectedUser?.username}}</h3>
+    <h5>{{selectedUser?.profile}}</h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Endpoints</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of selectedUser?.endpoints">
+        <i class="glyphicon glyphicon-tag"></i> {{item.tag}}: {{item.phone}}
+        <div *ngIf="item._id == selectedUser.default.endpoint">
+          DEFAULT
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h3>XIDs</h3>
+
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of selectedUser?.xids">
+        <i class="glyphicon glyphicon-tag"></i> {{item.tag}}: {{item.phone}}
+        <div *ngIf="item._id == selectedUser.default.xid">
+          DEFAULT
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>-->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header card-default">
+        <div class="row">
+          <div class="col-xs-9">
+            <h2>{{selectedUser?.name}} <small>{{selectedUser?.profile}}</small></h2>
+          </div>
+          <div class="col-xs-3">
+            <a class="btn btn-primary" [routerLink]="['edit']"><i class="fa fa-edit"></i> Edit</a>
+            <a class="btn btn-danger" (click)="onDelete(user_id)"><i class="fa fa-remove"></i> Remove</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-block">
+        <h3>{{selectedUser?.username}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header card-default">
+        <h3>Endpoints</h3>
+      </div>
+      <div class="card-block">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of selectedUser?.endpoints">
+            <i class="fa fa-tag"></i> {{item.tag}}: {{item.phone}}
+            <p *ngIf="item._id == selectedUser.default.endpoint">
+              DEFAULT
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header card-default">
+        <h3>XID's</h3>
+      </div>
+      <div class="card-block">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let item of selectedUser?.xids">
+            <div class="input-group">
+              <i class="fa fa-tag"></i> {{item.tag}}: {{item.phone}}
+              <p *ngIf="item._id == selectedUser.default.xid">
+                DEFAULT
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
